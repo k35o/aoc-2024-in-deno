@@ -2,6 +2,7 @@
   "tasks": {
     "day1:part1": "deno run -A --watch day1/part1.ts",
     "day1:part2": "deno run -A --watch day1/part2.ts",
-    "day2:part1": "deno run -A --watch day2/part1.ts"
+    "day2:part1": "deno run -A --watch day2/part1.ts",
+    "day2:part2": "deno run -A --watch day2/part2.ts"
   }
 }
