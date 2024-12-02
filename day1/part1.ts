@@ -1,6 +1,9 @@
-const decoder = new TextDecoder("utf-8");
-const data = decoder.decode(await Deno.readFile("input.txt"));
-const lines = data.split("\n");
+import * as path from "jsr:@std/path";
+import { readFileAsString } from "../utils.ts";
+
+const lines = (await readFileAsString(
+  path.join(import.meta.dirname ?? "", "input.txt")
+)).split("\n");
 
 const left: number[] = [];
 const right: number[] = [];
