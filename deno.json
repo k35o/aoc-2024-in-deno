@@ -5,6 +5,7 @@
     "day2:part1": "deno run -A --watch day2/part1.ts",
     "day2:part2": "deno run -A --watch day2/part2.ts",
     "day3:part1": "deno run -A --watch day3/part1.ts",
-    "day3:part2": "deno run -A --watch day3/part2.ts"
+    "day3:part2": "deno run -A --watch day3/part2.ts",
+    "day4:part1": "deno run -A --watch day4/part1.ts"
   }
 }
