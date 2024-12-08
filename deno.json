@@ -13,6 +13,8 @@
     "day6:part1": "deno run -A --watch day6/part1.ts",
     "day6:part2": "deno run -A --watch day6/part2.ts",
     "day7:part1": "deno run -A --watch day7/part1.ts",
-    "day7:part2": "deno run -A --watch day7/part2.ts"
+    "day7:part2": "deno run -A --watch day7/part2.ts",
+    "day8:part1": "deno run -A --watch day8/part1.ts",
+    "day8:part2": "deno run -A --watch day8/part2.ts"
   }
 }
