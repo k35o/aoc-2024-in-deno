@@ -2,9 +2,8 @@ import * as path from "jsr:@std/path";
 import { readFileAsString } from "../utils.ts";
 
 const lines = (await readFileAsString(
-  path.join(import.meta.dirname ?? "", "input.txt")
+  path.join(import.meta.dirname ?? "", "input.txt"),
 )).split("\n");
-
 
 let result = 0;
 
@@ -15,7 +14,7 @@ for (const line of lines) {
   const matches = line.matchAll(regex);
 
   for (const match of matches) {
-    if (match[0] === 'do()') {
+    if (match[0] === "do()") {
       doCalc = true;
       continue;
     }

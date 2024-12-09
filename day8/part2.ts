@@ -10,7 +10,7 @@ const antenna = new Map<string, string[]>();
 
 for (let i = 0; i < lines.length; i++) {
   for (let j = 0; j < lines[i].length; j++) {
-    if (lines[i][j] === '.') {
+    if (lines[i][j] === ".") {
       continue;
     }
     if (antenna.has(lines[i][j])) {
@@ -21,14 +21,22 @@ for (let i = 0; i < lines.length; i++) {
 
         let antinodesCandidateX = j;
         let antinodesCandidateY = i;
-        while (antinodesCandidateY >= 0 && antinodesCandidateX >= 0 && antinodesCandidateY < lines.length && antinodesCandidateX < lines[0].length) {
+        while (
+          antinodesCandidateY >= 0 && antinodesCandidateX >= 0 &&
+          antinodesCandidateY < lines.length &&
+          antinodesCandidateX < lines[0].length
+        ) {
           antinodes.add(`${antinodesCandidateY},${antinodesCandidateX}`);
           antinodesCandidateX += dx;
           antinodesCandidateY += dy;
         }
         antinodesCandidateX = x;
         antinodesCandidateY = y;
-        while (antinodesCandidateY >= 0 && antinodesCandidateX >= 0 && antinodesCandidateY < lines.length && antinodesCandidateX < lines[0].length) {
+        while (
+          antinodesCandidateY >= 0 && antinodesCandidateX >= 0 &&
+          antinodesCandidateY < lines.length &&
+          antinodesCandidateX < lines[0].length
+        ) {
           antinodes.add(`${antinodesCandidateY},${antinodesCandidateX}`);
           antinodesCandidateX -= dx;
           antinodesCandidateY -= dy;

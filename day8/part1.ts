@@ -10,7 +10,7 @@ const antenna = new Map<string, string[]>();
 
 for (let i = 0; i < lines.length; i++) {
   for (let j = 0; j < lines[i].length; j++) {
-    if (lines[i][j] === '.') {
+    if (lines[i][j] === ".") {
       continue;
     }
     if (antenna.has(lines[i][j])) {
@@ -19,18 +19,18 @@ for (let i = 0; i < lines.length; i++) {
         const dx = j - x;
         const dy = i - y;
         if (
-          i + dy >= 0
-          && j + dx >= 0
-          && i + dy < lines.length
-          && j + dx < lines[0].length
+          i + dy >= 0 &&
+          j + dx >= 0 &&
+          i + dy < lines.length &&
+          j + dx < lines[0].length
         ) {
           antinodes.add(`${i + dy},${j + dx}`);
         }
         if (
-          y - dy >= 0
-          && x - dx >= 0
-          && y - dy < lines.length
-          && x - dx < lines[0].length
+          y - dy >= 0 &&
+          x - dx >= 0 &&
+          y - dy < lines.length &&
+          x - dx < lines[0].length
         ) {
           antinodes.add(`${y - dy},${x - dx}`);
         }

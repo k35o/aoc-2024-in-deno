@@ -27,16 +27,16 @@ const isCheckSafeLine = (nums: string[]): boolean => {
     const diff = Math.abs(parseInt(num) - parseInt(nums[i - 1]));
     if (diff > 0 && diff < 4) {
       return true;
-    };
+    }
 
     return false;
   });
 
   return isSafeStairs;
-}
+};
 
 const lines = (await readFileAsString(
-  path.join(import.meta.dirname ?? "", "input.txt")
+  path.join(import.meta.dirname ?? "", "input.txt"),
 )).split("\n");
 
 let result = 0;

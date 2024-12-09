@@ -2,7 +2,7 @@ import * as path from "jsr:@std/path";
 import { readFileAsString } from "../utils.ts";
 
 const lines = (await readFileAsString(
-  path.join(import.meta.dirname ?? "", "input.txt")
+  path.join(import.meta.dirname ?? "", "input.txt"),
 )).split("\n");
 
 let result = 0;
@@ -35,7 +35,7 @@ for (const line of lines) {
     const diff = Math.abs(parseInt(num) - parseInt(numbers[i - 1]));
     if (diff > 0 && diff < 4) {
       return true;
-    };
+    }
 
     return false;
   });

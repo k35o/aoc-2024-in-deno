@@ -26,5 +26,6 @@ function calibration(values: string[], answer: string, result: number): number {
     return 0;
   }
 
-  return calibration(values.slice(1), answer, result + Number(values[0])) + calibration(values.slice(1), answer, result * Number(values[0]));
+  return calibration(values.slice(1), answer, result + Number(values[0])) +
+    calibration(values.slice(1), answer, result * Number(values[0]));
 }

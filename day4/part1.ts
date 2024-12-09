@@ -5,8 +5,8 @@ const lines = (await readFileAsString(
   path.join(import.meta.dirname ?? "", "input.txt"),
 )).split("\n");
 
-const XMAS = 'XMAS';
-const REVERSE_XMAS = 'SAMX';
+const XMAS = "XMAS";
+const REVERSE_XMAS = "SAMX";
 
 let result = 0;
 
@@ -32,7 +32,7 @@ function countHorizontal(grid: string[], substring: string) {
   let count = 0;
 
   for (const row of grid) {
-    count += (row.split(substring).length - 1);
+    count += row.split(substring).length - 1;
   }
 
   return count;
@@ -48,12 +48,11 @@ function countVertical(grid: string[], substring: string) {
     for (let row = 0; row < numRows; row++) {
       columnString += grid[row][col];
     }
-    count += (columnString.split(substring).length - 1);
+    count += columnString.split(substring).length - 1;
   }
 
   return count;
 }
-
 
 function countDiagonalRight(grid: string[], substring: string) {
   const numRows = grid.length;
@@ -63,18 +62,26 @@ function countDiagonalRight(grid: string[], substring: string) {
   // 右下がりの斜めを作る
   for (let startRow = 0; startRow < numRows; startRow++) {
     let diagonalString = "";
-    for (let row = startRow, col = 0; row < numRows && col < numCols; row++, col++) {
+    for (
+      let row = startRow, col = 0;
+      row < numRows && col < numCols;
+      row++, col++
+    ) {
       diagonalString += grid[row][col];
     }
-    count += (diagonalString.split(substring).length - 1);
+    count += diagonalString.split(substring).length - 1;
   }
 
   for (let startCol = 1; startCol < numCols; startCol++) {
     let diagonalString = "";
-    for (let col = startCol, row = 0; col < numCols && row < numRows; col++, row++) {
+    for (
+      let col = startCol, row = 0;
+      col < numCols && row < numRows;
+      col++, row++
+    ) {
       diagonalString += grid[row][col];
     }
-    count += (diagonalString.split(substring).length - 1);
+    count += diagonalString.split(substring).length - 1;
   }
 
   return count;
@@ -88,10 +95,14 @@ function countDiagonalLeft(grid: string[], substring: string) {
   // 左下がりの斜めを作る
   for (let startRow = 0; startRow < numRows; startRow++) {
     let diagonalString = "";
-    for (let row = startRow, col = numCols - 1; row < numRows && col >= 0; row++, col--) {
+    for (
+      let row = startRow, col = numCols - 1;
+      row < numRows && col >= 0;
+      row++, col--
+    ) {
       diagonalString += grid[row][col];
     }
-    count += (diagonalString.split(substring).length - 1);
+    count += diagonalString.split(substring).length - 1;
   }
 
   for (let startCol = numCols - 2; startCol >= 0; startCol--) {
@@ -99,7 +110,7 @@ function countDiagonalLeft(grid: string[], substring: string) {
     for (let col = startCol, row = 0; col >= 0 && row < numRows; col--, row++) {
       diagonalString += grid[row][col];
     }
-    count += (diagonalString.split(substring).length - 1);
+    count += diagonalString.split(substring).length - 1;
   }
 
   return count;
