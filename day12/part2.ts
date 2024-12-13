@@ -18,7 +18,8 @@ const gardenMap = new Map<string, (string | null)[][]>();
 for (let i = 0; i < lines.length; i++) {
   const line = lines[i];
   for (let j = 0; j < line.length; j++) {
-    const currentGarden = gardenMap.get(garden[i][j]) ?? structuredClone(garden);
+    const currentGarden = gardenMap.get(garden[i][j]) ??
+      structuredClone(garden);
     const char = currentGarden[i][j];
     if (char === null) {
       continue;
@@ -34,7 +35,10 @@ for (let i = 0; i < lines.length; i++) {
         if (currentGarden[y - 1][x]) {
           const topChar = currentGarden[y - 1][x];
           if (topChar !== char) {
-            if (x - 1 < 0 || garden[y][x - 1] !== char || garden[y - 1][x - 1] === char) {
+            if (
+              x - 1 < 0 || garden[y][x - 1] !== char ||
+              garden[y - 1][x - 1] === char
+            ) {
               fence++;
             }
           } else {
@@ -51,7 +55,10 @@ for (let i = 0; i < lines.length; i++) {
         if (currentGarden[y + 1][x]) {
           const bottomChar = currentGarden[y + 1][x];
           if (bottomChar !== char) {
-            if (x + 1 >= line.length || garden[y][x + 1] !== char || garden[y + 1][x + 1] === char) {
+            if (
+              x + 1 >= line.length || garden[y][x + 1] !== char ||
+              garden[y + 1][x + 1] === char
+            ) {
               fence++;
             }
           } else {
@@ -68,7 +75,10 @@ for (let i = 0; i < lines.length; i++) {
         if (currentGarden[y][x - 1]) {
           const leftChar = currentGarden[y][x - 1];
           if (leftChar !== char) {
-            if (y - 1 < 0 || garden[y - 1][x] !== char || garden[y - 1][x - 1] === char) {
+            if (
+              y - 1 < 0 || garden[y - 1][x] !== char ||
+              garden[y - 1][x - 1] === char
+            ) {
               fence++;
             }
           } else {
@@ -85,7 +95,10 @@ for (let i = 0; i < lines.length; i++) {
         if (currentGarden[y][x + 1]) {
           const rightChar = currentGarden[y][x + 1];
           if (rightChar !== char) {
-            if (y + 1 >= lines.length || garden[y + 1][x] !== char || garden[y + 1][x + 1] === char) {
+            if (
+              y + 1 >= lines.length || garden[y + 1][x] !== char ||
+              garden[y + 1][x + 1] === char
+            ) {
               fence++;
             }
           } else {
@@ -97,7 +110,7 @@ for (let i = 0; i < lines.length; i++) {
           fence++;
         }
       }
-    }
+    };
     adjacent(j, i);
 
     gardenMap.set(char, currentGarden);

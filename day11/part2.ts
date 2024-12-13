@@ -13,12 +13,12 @@ for (const line of lines) {
   map.set(line, (map.get(line) ?? 0) + 1);
 }
 
-for (let i = 0; i < BREAKING; i ++) {
+for (let i = 0; i < BREAKING; i++) {
   const newMap = new Map<string, number>();
   const lines = Array.from(map.keys());
   for (let j = 0; j < lines.length; j++) {
-    if (lines[j] === '0') {
-      newMap.set('1', (newMap.get('1') ?? 0) + (map.get(lines[j]) ?? 1));
+    if (lines[j] === "0") {
+      newMap.set("1", (newMap.get("1") ?? 0) + (map.get(lines[j]) ?? 1));
       continue;
     }
     if (lines[j].length % 2 === 0) {

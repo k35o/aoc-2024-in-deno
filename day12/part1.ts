@@ -18,7 +18,8 @@ const gardenMap = new Map<string, (string | null)[][]>();
 for (let i = 0; i < lines.length; i++) {
   const line = lines[i];
   for (let j = 0; j < line.length; j++) {
-    const currentGarden = gardenMap.get(garden[i][j]) ?? structuredClone(garden);
+    const currentGarden = gardenMap.get(garden[i][j]) ??
+      structuredClone(garden);
     const char = currentGarden[i][j];
     if (char === null) {
       continue;
@@ -81,7 +82,7 @@ for (let i = 0; i < lines.length; i++) {
       } else {
         fence++;
       }
-    }
+    };
     adjacent(j, i);
 
     gardenMap.set(char, currentGarden);

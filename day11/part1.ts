@@ -7,13 +7,13 @@ let lines = (await readFileAsString(
 
 const BREAKING = 25;
 
-for (let i = 0; i < BREAKING; i ++) {
+for (let i = 0; i < BREAKING; i++) {
   let nextLines = lines;
   let k = 0;
   console.log(nextLines);
   for (let j = 0; j < lines.length; j++) {
-    if (lines[j] === '0') {
-      nextLines[k] = '1';
+    if (lines[j] === "0") {
+      nextLines[k] = "1";
       k++;
       continue;
     }
