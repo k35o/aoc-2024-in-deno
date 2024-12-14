@@ -27,7 +27,7 @@
     "day13:part1": "deno run -A --watch day13/part1.ts",
     "day13:part2": "deno run -A --watch day13/part2.ts",
     "day14:part1": "deno run -A --watch day14/part1.ts",
-    "day14:part2": "deno run -A --watch day14/part2.ts",
+    "day14:part2": "deno serve -A --watch day14/part2.tsx",
     "day15:part1": "deno run -A --watch day15/part1.ts",
     "day15:part2": "deno run -A --watch day15/part2.ts",
     "day16:part1": "deno run -A --watch day16/part1.ts",
@@ -50,5 +50,10 @@
     "day24:part2": "deno run -A --watch day24/part2.ts",
     "day25:part1": "deno run -A --watch day25/part1.ts",
     "day25:part2": "deno run -A --watch day25/part2.ts"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxFragmentFactory": "Fragment",
+    "jsxImportSource": "jsr:@hono/hono/jsx"
   }
 }
