@@ -22,7 +22,12 @@ for (let y = 0; y < map.length; y++) {
 const points: number[] = [];
 const pointMap: Record<string, number> = {};
 let minMap = new Set<string>();
-const re = (position: [number, number], point = 0, pastVisited: string[] = [], lastDirection?: Direction) => {
+const re = (
+  position: [number, number],
+  point = 0,
+  pastVisited: string[] = [],
+  lastDirection?: Direction,
+) => {
   const [y, x] = position;
   const current = map[y][x];
 
@@ -74,11 +79,11 @@ const re = (position: [number, number], point = 0, pastVisited: string[] = [], l
     re([y, x - 1], point + 1001, [...pastVisited], "left");
   } else {
     re([y + 1, x], point + 1001, [...pastVisited], "bottom");
-    re([y, x + 1], point + 1001, [...pastVisited],"right");
+    re([y, x + 1], point + 1001, [...pastVisited], "right");
     re([y - 1, x], point + 1001, [...pastVisited], "top");
     re([y, x - 1], point + 1001, [...pastVisited], "left");
   }
-}
+};
 
 re(startPositions);
 

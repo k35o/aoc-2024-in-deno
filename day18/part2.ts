@@ -41,19 +41,31 @@ const isOk = (lines: [number, number][], step: number) => {
         break;
       }
 
-      if (!isOutOfBoundary(x + 1, y) && map[x + 1][y] !== "#" && !visited.has(`${x + 1},${y}`)) {
+      if (
+        !isOutOfBoundary(x + 1, y) && map[x + 1][y] !== "#" &&
+        !visited.has(`${x + 1},${y}`)
+      ) {
         steps.push([x + 1, y]);
         visited.add(`${x + 1},${y}`);
       }
-      if (!isOutOfBoundary(x, y + 1) && map[x][y + 1] !== "#" && !visited.has(`${x},${y + 1}`)) {
+      if (
+        !isOutOfBoundary(x, y + 1) && map[x][y + 1] !== "#" &&
+        !visited.has(`${x},${y + 1}`)
+      ) {
         steps.push([x, y + 1]);
         visited.add(`${x},${y + 1}`);
       }
-      if (!isOutOfBoundary(x - 1, y) && map[x - 1][y] !== "#" && !visited.has(`${x - 1},${y}`)) {
+      if (
+        !isOutOfBoundary(x - 1, y) && map[x - 1][y] !== "#" &&
+        !visited.has(`${x - 1},${y}`)
+      ) {
         steps.push([x - 1, y]);
         visited.add(`${x - 1},${y}`);
       }
-      if (!isOutOfBoundary(x, y - 1) && map[x][y - 1] !== "#" && !visited.has(`${x},${y - 1}`)) {
+      if (
+        !isOutOfBoundary(x, y - 1) && map[x][y - 1] !== "#" &&
+        !visited.has(`${x},${y - 1}`)
+      ) {
         steps.push([x, y - 1]);
         visited.add(`${x},${y - 1}`);
       }
