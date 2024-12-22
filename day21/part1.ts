@@ -19,7 +19,11 @@ import { readFileAsString } from "../utils.ts";
 // <<^A
 // v<<AA>^A>A
 
-const nkMap = [['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['#', '0', 'A']] as const;
+const nkMap = [["7", "8", "9"], ["4", "5", "6"], ["1", "2", "3"], [
+  "#",
+  "0",
+  "A",
+]] as const;
 const nkPosition = {
   "0": [3, 1],
   "1": [2, 0],
@@ -33,7 +37,7 @@ const nkPosition = {
   "9": [0, 2],
   A: [3, 2],
 } as const;
-const dkMap = [['#', 'top', 'A'], ['left', 'bottom', 'right']] as const;
+const dkMap = [["#", "top", "A"], ["left", "bottom", "right"]] as const;
 const dkPosition = {
   top: [0, 1],
   left: [1, 0],
@@ -49,7 +53,7 @@ const lines = (await readFileAsString(
   path.join(import.meta.dirname ?? "", "input.txt"),
 )).split("\n");
 
-let result = 0
+let result = 0;
 
 const nkRoutes = (start: NKKey, end: NKKey) => {
   if (start === "#" || end === "#") {
@@ -59,7 +63,7 @@ const nkRoutes = (start: NKKey, end: NKKey) => {
   const endPositions = nkPosition[end];
 
   const queue: [readonly [number, number], DKKey[]][] = [[startPositions, []]];
-  const visited = new Set<string>(start)
+  const visited = new Set<string>(start);
   while (queue.length > 0) {
     const [current, routes] = queue.shift()!;
     if (current[0] === endPositions[0] && current[1] === endPositions[1]) {
@@ -72,19 +76,31 @@ const nkRoutes = (start: NKKey, end: NKKey) => {
           break;
         }
         if (route == "#") {
-          throw new Error('Invalid route');
+          throw new Error("Invalid route");
         }
         if (route === "top") {
-          position = [position[0] - 1, position[1]] as typeof nkPosition[keyof typeof nkPosition];
+          position = [
+            position[0] - 1,
+            position[1],
+          ] as typeof nkPosition[keyof typeof nkPosition];
         }
         if (route === "bottom") {
-          position = [position[0] + 1, position[1]] as typeof nkPosition[keyof typeof nkPosition];
+          position = [
+            position[0] + 1,
+            position[1],
+          ] as typeof nkPosition[keyof typeof nkPosition];
         }
         if (route === "left") {
-          position = [position[0], position[1] - 1] as typeof nkPosition[keyof typeof nkPosition];
+          position = [
+            position[0],
+            position[1] - 1,
+          ] as typeof nkPosition[keyof typeof nkPosition];
         }
         if (route === "right") {
-          position = [position[0], position[1] + 1] as typeof nkPosition[keyof typeof nkPosition];
+          position = [
+            position[0],
+            position[1] + 1,
+          ] as typeof nkPosition[keyof typeof nkPosition];
         }
       }
       let result = sortedRoutes;
@@ -93,7 +109,13 @@ const nkRoutes = (start: NKKey, end: NKKey) => {
       }
       return result;
     }
-    for (const [dx, dy, direction] of [[-1, 0, 'top'], [1, 0, 'bottom'], [0, -1, 'left'], [0, 1, 'right']] as const) {
+    for (
+      const [dx, dy, direction] of [[-1, 0, "top"], [1, 0, "bottom"], [
+        0,
+        -1,
+        "left",
+      ], [0, 1, "right"]] as const
+    ) {
       const nextX = current[0] + dx;
       const nextY = current[1] + dy;
       if (nextX >= 0 && nextX < 4 && nextY >= 0 && nextY < 3) {
@@ -104,13 +126,13 @@ const nkRoutes = (start: NKKey, end: NKKey) => {
             [
               [nextX, nextY],
               [...routes, direction],
-            ]
+            ],
           );
         }
       }
     }
   }
-}
+};
 
 const dkRoutes = (start: DKKey, end: DKKey) => {
   if (start === "#" || end === "#") {
@@ -120,7 +142,7 @@ const dkRoutes = (start: DKKey, end: DKKey) => {
   const endPositions = dkPosition[end];
 
   const queue: [readonly [number, number], DKKey[]][] = [[startPositions, []]];
-  const visited = new Set<string>(start)
+  const visited = new Set<string>(start);
   while (queue.length > 0) {
     const [current, routes] = queue.shift()!;
     if (current[0] === endPositions[0] && current[1] === endPositions[1]) {
@@ -133,19 +155,31 @@ const dkRoutes = (start: DKKey, end: DKKey) => {
           break;
         }
         if (route == "#") {
-          throw new Error('Invalid route');
+          throw new Error("Invalid route");
         }
         if (route === "top") {
-          position = [position[0] - 1, position[1]] as typeof dkPosition[keyof typeof dkPosition];
+          position = [
+            position[0] - 1,
+            position[1],
+          ] as typeof dkPosition[keyof typeof dkPosition];
         }
         if (route === "bottom") {
-          position = [position[0] + 1, position[1]] as typeof dkPosition[keyof typeof dkPosition];
+          position = [
+            position[0] + 1,
+            position[1],
+          ] as typeof dkPosition[keyof typeof dkPosition];
         }
         if (route === "left") {
-          position = [position[0], position[1] - 1] as typeof dkPosition[keyof typeof dkPosition];
+          position = [
+            position[0],
+            position[1] - 1,
+          ] as typeof dkPosition[keyof typeof dkPosition];
         }
         if (route === "right") {
-          position = [position[0], position[1] + 1] as typeof dkPosition[keyof typeof dkPosition];
+          position = [
+            position[0],
+            position[1] + 1,
+          ] as typeof dkPosition[keyof typeof dkPosition];
         }
       }
       let result = sortedRoutes;
@@ -154,7 +188,13 @@ const dkRoutes = (start: DKKey, end: DKKey) => {
       }
       return result;
     }
-    for (const [dx, dy, direction] of [[-1, 0, 'top'], [1, 0, 'bottom'], [0, -1, 'left'], [0, 1, 'right']] as const) {
+    for (
+      const [dx, dy, direction] of [[-1, 0, "top"], [1, 0, "bottom"], [
+        0,
+        -1,
+        "left",
+      ], [0, 1, "right"]] as const
+    ) {
       const nextX = current[0] + dx;
       const nextY = current[1] + dy;
       if (nextX >= 0 && nextX < 2 && nextY >= 0 && nextY < 3) {
@@ -165,45 +205,45 @@ const dkRoutes = (start: DKKey, end: DKKey) => {
             [
               [nextX, nextY],
               [...routes, direction],
-            ]
+            ],
           );
         }
       }
     }
   }
-}
+};
 
 for (const line of lines) {
   let firstOperation: DKKey[] = [];
-  let firstKey: NKKey = 'A';
+  let firstKey: NKKey = "A";
   for (const char of line) {
     const routes = nkRoutes(firstKey, char as NKKey);
     if (!routes) {
-      throw new Error('No route found');
+      throw new Error("No route found");
     }
-    firstOperation = [...firstOperation, ...routes, 'A'];
+    firstOperation = [...firstOperation, ...routes, "A"];
     firstKey = char as NKKey;
   }
 
   let secondaOperation: DKKey[] = [];
-  let secondKey: DKKey = 'A';
+  let secondKey: DKKey = "A";
   for (const char of firstOperation) {
     const routes = dkRoutes(secondKey, char as DKKey);
     if (!routes) {
-      throw new Error('No route found');
+      throw new Error("No route found");
     }
-    secondaOperation = [...secondaOperation, ...routes, 'A'];
+    secondaOperation = [...secondaOperation, ...routes, "A"];
     secondKey = char as DKKey;
   }
 
   let thirdOperation: DKKey[] = [];
-  let thirdKey: DKKey = 'A';
+  let thirdKey: DKKey = "A";
   for (const char of secondaOperation) {
     const routes = dkRoutes(thirdKey, char as DKKey);
     if (!routes) {
-      throw new Error('No route found');
+      throw new Error("No route found");
     }
-    thirdOperation = [...thirdOperation, ...routes, 'A'];
+    thirdOperation = [...thirdOperation, ...routes, "A"];
     thirdKey = char as DKKey;
   }
 
