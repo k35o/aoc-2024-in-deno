@@ -13,7 +13,6 @@ for (const line of lines) {
   lanMap.set(lan2, new Set([...lanMap.get(lan2) ?? [], lan1]));
 }
 
-
 let count = 0;
 for (const [lan, connections] of lanMap) {
   for (const connection1 of connections) {
@@ -22,7 +21,10 @@ for (const [lan, connections] of lanMap) {
     for (const connection2 of connections2) {
       if (connection1 === connection2) continue;
       if (lanMap.get(connection1)?.has(connection2)) {
-        if (lan.startsWith("t") || connection1.startsWith("t") || connection2.startsWith("t")) {
+        if (
+          lan.startsWith("t") || connection1.startsWith("t") ||
+          connection2.startsWith("t")
+        ) {
           count++;
         }
       }

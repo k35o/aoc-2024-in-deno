@@ -17,7 +17,7 @@ let connectionMap: {
   set: string;
   count: number;
 } = {
-  set: '',
+  set: "",
   count: 0,
 };
 const lanOrderByAlphabet = [...lanMap.keys()].sort();
@@ -46,20 +46,22 @@ for (const lan of lanOrderByAlphabet) {
     tempMap.set([...connections].sort().join(","), count);
     for (const result of results) {
       if (connections.has(result)) continue;
-      if ([...connections].every((connection) => {
-        if (result === connection) return true;
-        return lanMap.get(connection)?.has(result)
-      })) {
+      if (
+        [...connections].every((connection) => {
+          if (result === connection) return true;
+          return lanMap.get(connection)?.has(result);
+        })
+      ) {
         re([new Set([...connections, result]), count + 1]);
       }
     }
-  }
+  };
 
   re([new Set(), 0]);
   for (const [key, value] of tempMap) {
     if (value > connectionMap.count) {
       connectionMap = {
-        set: [lan, ...key.split(',')].sort().join(","),
+        set: [lan, ...key.split(",")].sort().join(","),
         count: value,
       };
     }
