@@ -48,8 +48,7 @@
     "day23:part2": "deno run -A --watch day23/part2.ts",
     "day24:part1": "deno run -A --watch day24/part1.ts",
     "day24:part2": "deno run -A --watch day24/part2.ts",
-    "day25:part1": "deno run -A --watch day25/part1.ts",
-    "day25:part2": "deno run -A --watch day25/part2.ts"
+    "day25:part1": "deno run -A --watch day25/part1.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
